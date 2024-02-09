@@ -30,8 +30,8 @@ The SOC Automation Project aimed to build a simulated Security Operations Center
 6. **Analyst Notification:** Automated email sent to the analyst with comprehensive data for remediation.
 
 ## SOAR Workflow 
-<img alt="SOC Project Flow" src="https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/3b82a10c-56b1-48e7-a44d-700b14339195">
-   
+![socprojectflow](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/4b3496be-0804-4437-9cb8-6b7c33f2aa9b)
+
                                                            
 ## Steps
 
@@ -382,6 +382,11 @@ Once we have confirmed this alert generates correctly we can add the final piece
 ![socemail_inbox](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/0ef2b695-548f-4155-91b9-556fe6ca7b16)
 
 ![socemail_output](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/5875a9c6-1a44-4ecf-b739-0fd8e626d187)
+
+### Here is our finalized workflow on Shuffle:
+
+![soar_setup](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/5e1afd86-38e7-4d8a-8a8a-2e61639b4a71)
+
 
 ## Now that we have our SOAR automation set up we can run through and see how powerful this can be in a real world scenario.
 
