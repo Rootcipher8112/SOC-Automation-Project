@@ -53,10 +53,24 @@ For this lab there were multiple setup steps before getting started with the bul
   1. Shuffle.io
   2. VirusTotal (free account works fine but has limit of 500 API calls a day) 
   3. Email account (Used for Analyst notification. Used gmail for this lab)
+##
+**IMPORTANT SETUP INFORMATION FOR CLOUD FIREWALL**
+
+<img width="573" alt="digidash" src="https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/0ee076ca-1080-4be1-9002-1b60ba0159ee">
+
+##
+**After creating our cloud machines we need to configure some firewall rules before we begin installing our tools.** 
+
+<img width="507" alt="firewall" src="https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/beb6dbe1-eac9-4900-b8d1-ee3e6e04a94e">
+
+**For the purposes of this lab I have set 2 inbound rules:**
+- SSH on port 22 only from my local host public IP address (So only I can SSH into the machines)
+- All TCP on port 9000 (This will be necessary for communication with TheHive later)
+##
 
 ### Configuring Wazuh Manager
 
-As I mentioned before the Wazuh manager is built within an Ubuntu 22.04 cloud machine hosted on Digital Ocean. Setup is fairly straight forward the only configuration steps that are important is the amound of RAM and storage needed. The Wazuh documentation recommends a minimum of 8GB of RAM and 50GB of storage to operate correctly. 
+As I mentioned before the Wazuh manager is installed on an Ubuntu 22.04 cloud machine hosted on Digital Ocean. Setup is fairly straight forward the only configuration steps that are important is the amound of RAM and storage needed. The Wazuh documentation recommends a minimum of 8GB of RAM and 50GB of storage to operate correctly. 
 #add photo of digital ocean wazuh server
 
 Once setup we can deploy the machine. We are going to need to find the public IP address. We will be using ssh from our local machine to access this machine and continue with Wazuh setup.
@@ -160,16 +174,17 @@ Now that we have agents communication with the Wazuh Manager there is a lot of i
 ##
 Through this screen we can see a break down of CIS enterprise security benchmarks for specific Operating Systems, here he have Windows 11. We can then dig in and go through the passed and failed benchmarks. Any failed benchmarks will need to be remediated to bring the operating system in compliance.
 
-![sca_windows_client](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/dc50b75b-4a48-4eef-9bab-f414bf4b2dc5)
+![failed_benchmark_windows_client](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/7bbf8c25-a621-4133-885e-97fecdd1ac8f)
 
-At this point we can quickly recap what we've done:
+
+## At this point we can quickly recap what we've done:
 - Setup cloud hosted machines for Wazuh and TheHive
 - Setup Virtual Machines (Windows 10 and Ubuntu 22.04)
 - Setup and configured Wazuh Manager on the cloud machine
 - Setup Wazuh agents on the local host and both virtual machines
 - Become familiar with the Wazuh Dashboard
 
-**Next step is to download and configure TheHive on the other cloud machine**
+### Next step is to download and configure TheHive on the other cloud machine
 
 ## Setting up TheHive
 
