@@ -329,10 +329,13 @@ Once in the dashboard we can change the admin password, add a default user for o
 
 ## Setting up Shuffle.io
 
-![soar_setup](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/a37a8126-b3aa-4e80-92d0-0831528c190d)
+![image](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/75574167-016d-4b89-89e5-34d0c0bfa19c)
 
 
-Shuffle is a tool used to create and manage workflows https://shuffler.io. First we will configure the Wazuh Manager with the shuffle integration in the configuration file. This integration will be attached to the **Webhook** feature within Shuffle. The webhook is a basic trigger function which can be configured in many different ways. For our use here I am going to configure the webhook to be triggered when a new file is downloaded into the **"Downloads"** folder on my wazuh agent.  In order to do this we are going to add the following to our /var/ossec/etc/ossec.conf file on our Wazuh Manager.
+Shuffle is a tool used to create and manage workflows https://shuffler.io. For our lab we will utilize Shuffle to create a work flow which begins with a trigger from Wazuh that grabs json data for a specified use case. This data can then be filtered and enrished through the use of a VirusTotal API call. Then the results of that analysis are sent to TheHive to create an alert and finally automate an email, based on the information, to our Analyst for remdiation.
+
+### Webhook Integration
+First we will configure the Wazuh Manager with the shuffle integration in the configuration file. This integration will be attached to the **Webhook** feature within Shuffle. The webhook is a basic trigger function which can be configured in many different ways. For our use here I am going to configure the webhook to be triggered when a new file is downloaded into the **"Downloads"** folder on my wazuh agent.  In order to do this we are going to add the following to our /var/ossec/etc/ossec.conf file on our Wazuh Manager.
 
 ![image](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/abd96a28-d70d-4d9c-8ab7-b7dd740d1092)
 
@@ -342,13 +345,14 @@ The **hook_url** comes from Shuffle when the webhook app is added to the work fl
 
 ![image](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/e9dd350b-5b10-476a-9e10-09c4efe8153c)
 
-
+### Gathering and Filtering JSON Data
 We can then start the webhook and test it out by downloading a file on our host machine.
 
 We should get back something like this on Shuffle:
 
 ![alert_exec](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/0c72c32b-aeb5-4225-862b-a486ca043be7)
 
+### VirusTotal Integration
 Next we can add a VirusTotal app to our workflow.  VirusTotal is site that can analyse files, hashes, and urls for signatures of malware. This is a well known tool in cybersecurity and can be extremely useful.
 
 ![virustotal_homepage](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/5d725e63-52f9-46e6-8322-903ba490fad4)
@@ -364,6 +368,7 @@ We can run our workflow again with VirusTotal configured and should return somet
 
 ![virustotal_output](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/55f4da08-2d81-4c26-afc7-a24bd4dde56b)
 
+### Connecting TheHive
 We can then go through this report and find the information we would like to send over to TheHive and then configure a TheHive app within our workflow.
 
 **Here we are going to use the API key we set up earlier as well as input all the variables associated with the information we will use to create an alert for our Analyst. This can be configured in many different ways based on use but for this lab We will add:**
@@ -377,12 +382,16 @@ We can then go through this report and find the information we would like to sen
 - File Hash
 - MITRE rule
 
+### Email Automation
 Once we have confirmed this alert generates correctly we can add the final piece of our SOAR automation, the email to our Analyst. Again we will configure the app within shuffle with all of the data that went into our TheHive app but we will also configure suggestions based on the findings of the file.  In our case since we are dealing with a malicious file the out put will be **"Malicious File Detected!! Immediate remediation is required!!**
 
 ![socemail_inbox](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/0ef2b695-548f-4155-91b9-556fe6ca7b16)
 
-![socemail_output](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/5875a9c6-1a44-4ecf-b739-0fd8e626d187)
 
+
+<img width="377" alt="new email pic" src="https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/d70f2a06-3560-42c4-ba32-6ee4ab2e9ca4">
+
+## 
 ### Here is our finalized workflow on Shuffle:
 
 ![soar_setup](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/5e1afd86-38e7-4d8a-8a8a-2e61639b4a71)
@@ -391,6 +400,6 @@ Once we have confirmed this alert generates correctly we can add the final piece
 ## Now that we have our SOAR automation set up we can run through and see how powerful this can be in a real world scenario.
 
 
-  
+# <a href="https://youtu.be/hsHIK_tJV7Y">CLICK HERE FOR DEMONSTRATION</a>   
     
     
