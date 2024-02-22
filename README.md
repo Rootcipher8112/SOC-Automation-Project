@@ -63,15 +63,16 @@ For this lab there were multiple setup steps before getting started with the bul
 
 <img width="507" alt="firewall" src="https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/beb6dbe1-eac9-4900-b8d1-ee3e6e04a94e">
 
-**For the purposes of this lab I have set 2 inbound rules:**
+**For the purposes of this lab I have set 3 inbound rules:**
 - SSH on port 22 only from my local host public IP address (So only I can SSH into the machines)
-- All TCP on port 9000 (This will be necessary for communication with TheHive later)
+- HTTPS on port 443 from my local host public IP address (so only I can access the Wazuh Dashboard)    
+- TCP on port 9000 (This will be necessary for communication with TheHive later)
 ##
 
 ### Configuring Wazuh Manager
 
 As I mentioned before the Wazuh manager is installed on an Ubuntu 22.04 cloud machine hosted on Digital Ocean. Setup is fairly straight forward the only configuration steps that are important is the amound of RAM and storage needed. The Wazuh documentation recommends a minimum of 8GB of RAM and 50GB of storage to operate correctly. 
-#add photo of digital ocean wazuh server
+
 
 Once setup we can deploy the machine. We are going to need to find the public IP address. We will be using ssh from our local machine to access this machine and continue with Wazuh setup.
 
