@@ -173,7 +173,7 @@ Now that we have agents communication with the Wazuh Manager there is a lot of i
 
 
 ##
-Through this screen we can see a break down of CIS enterprise security benchmarks for specific Operating Systems, here he have Windows 11. We can then dig in and go through the passed and failed benchmarks. Any failed benchmarks will need to be remediated to bring the operating system in compliance.
+Through this screen we can see a break down of CIS enterprise security benchmarks for specific Operating Systems, here he have Windows 11. We can then dig in and go through the passed and failed benchmarks. In a real world environment any failed benchmarks will need to be remediated to bring the operating system into compliance.
 
 ![failed_benchmark_windows_client](https://github.com/Rootcipher8112/SOC-Automation-Project/assets/123340212/7bbf8c25-a621-4133-885e-97fecdd1ac8f)
 
