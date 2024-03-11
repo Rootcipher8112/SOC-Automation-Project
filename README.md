@@ -416,6 +416,6 @@ Once we have confirmed this alert generates correctly we can add the final piece
 ## Now that we have our SOAR automation set up we can run through and see how powerful this can be in a real world scenario.
 
 
-# <a href="https://youtu.be/hsHIK_tJV7Y">CLICK HERE FOR DEMONSTRATION</a>   
-    
-    
+# <a href="https://youtu.be/D61Ty8PN5fw">CLICK HERE FOR DEMONSTRATION</a>   
+
+##
